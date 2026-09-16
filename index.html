@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Control Gasolina</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a2b4c">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gasolina">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ===== PANTALLA: INICI ===== -->
+  <section class="screen active" id="screen-home">
+    <header class="topbar">
+      <h1>⛽ Control Gasolina</h1>
+    </header>
+
+    <div class="content">
+      <div class="summary-card">
+        <p class="summary-label">Aquest mes</p>
+        <div class="summary-grid">
+          <div><span class="summary-icon">💰</span><span class="summary-value" id="sum-cost">—</span></div>
+          <div><span class="summary-icon">⛽</span><span class="summary-value" id="sum-litres">—</span></div>
+          <div><span class="summary-icon">🚗</span><span class="summary-value" id="sum-km">—</span></div>
+          <div><span class="summary-icon">📈</span><span class="summary-value" id="sum-consum">—</span></div>
+        </div>
+      </div>
+
+      <button class="btn-primary" data-nav="new">
+        <span class="btn-icon">📸</span> Nou repostatge
+      </button>
+
+      <div class="quick-links">
+        <button class="quick-link" data-nav="resum"><span>📊</span>Resum</button>
+        <button class="quick-link" data-nav="historial"><span>⛽</span>Repostatges</button>
+        <button class="quick-link" data-nav="consum"><span>📈</span>Consum</button>
+        <button class="quick-link" data-nav="tiquets"><span>📁</span>Tiquets</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PANTALLA: NOU REPOSTATGE ===== -->
+  <section class="screen" id="screen-new">
+    <header class="topbar with-back">
+      <button class="back-btn" data-nav="home">←</button>
+      <h1>Nou repostatge</h1>
+    </header>
+    <div class="content">
+      <div class="step-indicator">
+        <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+
+      <div class="placeholder-card">
+        <p class="placeholder-emoji">📸</p>
+        <p class="placeholder-text">Aquí anirà la càmera per escanejar el tiquet.</p>
+        <p class="placeholder-note">(Ho connectem al PAS 5)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PANTALLA: RESUM ===== -->
+  <section class="screen" id="screen-resum">
+    <header class="topbar with-back">
+      <button class="back-btn" data-nav="home">←</button>
+      <h1>Resum</h1>
+    </header>
+    <div class="content">
+      <div class="placeholder-card">
+        <p class="placeholder-emoji">📊</p>
+        <p class="placeholder-text">Aquí veuràs els resums mensuals i anuals amb gràfiques.</p>
+        <p class="placeholder-note">(Ho connectem al PAS 10)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PANTALLA: HISTORIAL ===== -->
+  <section class="screen" id="screen-historial">
+    <header class="topbar with-back">
+      <button class="back-btn" data-nav="home">←</button>
+      <h1>Repostatges</h1>
+    </header>
+    <div class="content">
+      <ul class="fuel-list" id="fuel-list">
+        <li class="empty-state">
+          <p class="placeholder-emoji">⛽</p>
+          <p>Encara no hi ha cap repostatge registrat.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== PANTALLA: CONSUM ===== -->
+  <section class="screen" id="screen-consum">
+    <header class="topbar with-back">
+      <button class="back-btn" data-nav="home">←</button>
+      <h1>Consum</h1>
+    </header>
+    <div class="content">
+      <div class="placeholder-card">
+        <p class="placeholder-emoji">📈</p>
+        <p class="placeholder-text">Evolució del consum L/100km.</p>
+        <p class="placeholder-note">(Ho connectem al PAS 10)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PANTALLA: TIQUETS ===== -->
+  <section class="screen" id="screen-tiquets">
+    <header class="topbar with-back">
+      <button class="back-btn" data-nav="home">←</button>
+      <h1>Tiquets</h1>
+    </header>
+    <div class="content">
+      <div class="placeholder-card">
+        <p class="placeholder-emoji">📁</p>
+        <p class="placeholder-text">Aquí veuràs totes les fotos de tiquets arxivades.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PANTALLA: CONFIGURACIÓ ===== -->
+  <section class="screen" id="screen-config">
+    <header class="topbar with-back">
+      <button class="back-btn" data-nav="home">←</button>
+      <h1>Configuració</h1>
+    </header>
+    <div class="content">
+      <div class="settings-group">
+        <button class="settings-item">⬇️ Descarregar Excel</button>
+        <button class="settings-item">⬇️ Descarregar CSV</button>
+        <button class="settings-item">📂 Obrir carpeta de tiquets</button>
+        <button class="settings-item">🚗 Gestionar vehicles</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NAVEGACIÓ INFERIOR ===== -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-nav="home"><span>🏠</span>Inici</button>
+    <button class="nav-item" data-nav="historial"><span>⛽</span>Registres</button>
+    <button class="nav-item nav-fab" data-nav="new"><span>📸</span></button>
+    <button class="nav-item" data-nav="consum"><span>📈</span>Consum</button>
+    <button class="nav-item" data-nav="config"><span>⚙️</span>Ajustos</button>
+  </nav>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
